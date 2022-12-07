@@ -1,6 +1,6 @@
-package com.altonchan.orderservice.model.entity;
+package com.altonchan.gatewayservice.model.entity;
 
-import com.altonchan.orderservice.model.enums.Status;
+import com.altonchan.gatewayservice.model.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

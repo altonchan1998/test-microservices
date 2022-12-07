@@ -1,4 +1,4 @@
-package com.altonchan.orderservice.model.entity;
+package com.altonchan.gatewayservice.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

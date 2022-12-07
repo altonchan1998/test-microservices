@@ -1,6 +1,8 @@
 spring:
-#  h2:
-#    console.enabled: true
+  application:
+    name: order-service
+  h2:
+    console.enabled: true
   datasource:
     url: jdbc:h2:mem:mydb
     driverClassName: org.h2.Driver
@@ -9,3 +11,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            scripts:
+              action: create
+              create-target: create.sql
+              create-source: metadata
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    preferIpAddress: true
