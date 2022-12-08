@@ -8,6 +8,7 @@ import com.altonchan.orderservice.repository.OrderRepository;
 import com.altonchan.orderservice.service.OrderServiceImpl;
 import com.altonchan.orderservice.service.client.GatewayServiceFeignClient;
 import com.altonchan.orderservice.service.interfaces.OrderService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/order")
+    @CircuitBreaker(name = "createOrder", fallbackMethod = "createOrderFallBack")
     public void createOrder(
             @RequestBody
             @Valid CreateOrderRequestDTO createOrderRequestDTO
@@ -38,6 +40,10 @@ public class OrderController {
         UUID clOrderId = orderService.create(createOrderRequestDTO).getClOrderID();
 
         gatewayServiceFeignClient.noticeNewOrder(new NoticeNewOrderRequestDTO(clOrderId));
+    }
+
+    private void createOrderFallBack(CreateOrderRequestDTO requestDTO, Exception ex) {
+
     }
 
     @GetMapping("/list")
