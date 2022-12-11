@@ -15,8 +15,4 @@ public interface GatewayClient {
     @RequestMapping(method = RequestMethod.PATCH, value = "/order", consumes = "application/json")
     @Retry(name = "notice-new-order", fallbackMethod = "fallback")
     Order noticeNewOrder(@RequestParam UUID clOrderId);
-
-    default Order fallback(@RequestParam UUID clOrderId, Throwable t) {
-        return new Order();
-    };
 }
