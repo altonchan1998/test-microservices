@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.sql.SQLException;
 
 @SpringBootApplication
-
 @EnableFeignClients
 public class OrderServiceApplication {
 

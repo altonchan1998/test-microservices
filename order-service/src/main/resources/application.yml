@@ -27,6 +27,10 @@ eureka:
   instance:
     preferIpAddress: true
 
+feign:
+  circuitbreaker:
+    enabled: true
+
 resilience4j:
   circuitbreaker:
     configs:
