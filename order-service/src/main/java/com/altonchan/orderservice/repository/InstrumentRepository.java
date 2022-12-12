@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface InstrumentRepository extends JpaRepository<Instrument, BigInteger> {
-    List<Instrument> findByCfiCOdeIn(List<String> cfiCode);
+    List<Instrument> findByCfiCodeIn(List<String> cfiCode);
     boolean existsByCfiCode(String cfiCode);
 }

@@ -20,6 +20,9 @@ public class Instrument {
     @Column(columnDefinition = "BIGINT", name = "instrument_id")
     private BigInteger id;
 
+    @Column(name = "cfi_code")
+    private String cfiCode;
+
     @ManyToMany
     @JoinTable(
             name = "tb_order_instrument_mapping",
@@ -28,6 +31,7 @@ public class Instrument {
     )
     private List<Order> orderList;
 
-    @Column(name = "cfi_code")
-    private String cfiCode;
+    public Instrument(String cfiCode) {
+        this.cfiCode = cfiCode;
+    }
 }

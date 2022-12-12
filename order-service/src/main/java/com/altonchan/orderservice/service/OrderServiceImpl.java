@@ -1,6 +1,6 @@
 package com.altonchan.orderservice.service;
 
-import com.altonchan.orderservice.mapper.interfaces.OrderQtyDataMapper;
+import com.altonchan.orderservice.mapper.OrderQtyDataMapper;
 import com.altonchan.orderservice.model.dto.InstrumentDTO;
 import com.altonchan.orderservice.model.dto.request.CreateOrderRequestDTO;
 import com.altonchan.orderservice.model.entity.Instrument;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -34,17 +33,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order create(CreateOrderRequestDTO requestDTO) {
-        List<OrderQtyData> orderQtyDataList = orderQtyDataMapper.toEntity(requestDTO.getOrderQtyDataList());
-        List<Instrument> instrumentList = instrumentRepository.findByCfiCOdeIn(
-                requestDTO.getInstrumentList().stream()
-                        .map(InstrumentDTO::getCfiCode)
-                        .collect(Collectors.toList())
-        );
+//        List<OrderQtyData> orderQtyDataList = orderQtyDataMapper.toEntity(requestDTO.getOrderQtyDataList());
+//        List<Instrument> instrumentList = instrumentRepository.findByCfiCodeIn(
+//                requestDTO.getInstrumentList().stream()
+//                        .map(InstrumentDTO::getCfiCode)
+//                        .collect(Collectors.toList())
+//        );
 
         Order order = new Order();
         order.setStatus(Status.SENT);
-        order.setOrderQtyDataList(orderQtyDataList);
-        order.setInstrumentList(instrumentList);
+//        order.setOrderQtyDataList(orderQtyDataList);
+//        order.setInstrumentList(instrumentList);
         order.setSide(requestDTO.getSide());
         order.setOrdType(requestDTO.getOrdType());
         order.setTransactTime(requestDTO.getTransactTime());

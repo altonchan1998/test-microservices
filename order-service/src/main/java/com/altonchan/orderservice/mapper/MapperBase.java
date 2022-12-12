@@ -1,4 +1,4 @@
-package com.altonchan.orderservice.mapper.interfaces;
+package com.altonchan.orderservice.mapper;
 
 import java.util.List;
 

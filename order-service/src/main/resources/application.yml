@@ -20,26 +20,33 @@ spring:
               create-target: create.sql
               create-source: metadata
 
+server:
+  port: 8080
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
   instance:
-    preferIpAddress: true
-
-feign:
-  circuitbreaker:
-    enabled: true
+    prefer-ip-address: true
 
 resilience4j:
+  retry:
+    configs:
+      default:
+        registerHealthIndicator: true
+    instances:
+      notify-new-order:
+        maxRetryAttempts: 2
+        waitDuration: 2s
   circuitbreaker:
     configs:
       default:
         registerHealthIndicator: true
     instances:
-      createOrder:
-        failure-rate-threshold: 50
-        minimum-number-of-calls: 5
-        automatic-transition-from-open-to-half-open-enabled: true
-        permitted-number-of-calls-in-half-open-state: 3
-        wait-duration-in-open-state: 20000
+      notify-new-order:
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 1
+

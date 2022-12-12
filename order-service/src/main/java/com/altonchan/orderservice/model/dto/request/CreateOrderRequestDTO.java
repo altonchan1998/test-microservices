@@ -3,8 +3,6 @@ package com.altonchan.orderservice.model.dto.request;
 import com.altonchan.orderservice.constant.ValidationMessages;
 import com.altonchan.orderservice.model.dto.InstrumentDTO;
 import com.altonchan.orderservice.model.dto.OrderQtyDataDTO;
-import com.altonchan.orderservice.model.entity.Instrument;
-import com.altonchan.orderservice.model.entity.OrderQtyData;
 import com.altonchan.orderservice.model.enums.OrdType;
 import com.altonchan.orderservice.model.enums.Side;
 import jakarta.validation.Valid;
@@ -28,8 +26,6 @@ public class CreateOrderRequestDTO {
     @NotNull(message = ValidationMessages.INVALID_TYPE)
     private Side side;
 
-    private LocalDateTime transactTime = LocalDateTime.now();
-
     @NotNull(message = ValidationMessages.NOT_NULL)
     @Size(min = 1, message = ValidationMessages.NOT_EMPTY)
     private List<@Valid OrderQtyDataDTO> orderQtyDataList;
@@ -37,4 +33,5 @@ public class CreateOrderRequestDTO {
     @NotNull(message = ValidationMessages.INVALID_TYPE)
     private OrdType ordType;
 
+    private LocalDateTime transactTime = LocalDateTime.now();
 }

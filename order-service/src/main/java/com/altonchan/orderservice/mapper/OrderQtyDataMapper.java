@@ -1,13 +1,9 @@
-package com.altonchan.orderservice.mapper.interfaces;
+package com.altonchan.orderservice.mapper;
 
-import com.altonchan.orderservice.model.dto.InstrumentDTO;
 import com.altonchan.orderservice.model.dto.OrderQtyDataDTO;
-import com.altonchan.orderservice.model.entity.Instrument;
 import com.altonchan.orderservice.model.entity.OrderQtyData;
 import org.mapstruct.Mapper;
 
-import java.util.List;
-
-@Mapper
+@Mapper(componentModel = "spring")
 public interface OrderQtyDataMapper extends MapperBase<OrderQtyData, OrderQtyDataDTO> {
 }

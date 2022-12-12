@@ -14,7 +14,7 @@ public class GatewayClientFallback implements GatewayClient {
     private OrderService orderService;
 
     @Override
-    public Order noticeNewOrder(UUID clOrderId) {
+    public Order notifyNewOrder(UUID clOrderId) {
         return orderService.findByClOrderId(clOrderId).orElse(null);
     }
 }
