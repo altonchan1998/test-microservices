@@ -25,7 +25,7 @@ public class GatewayController {
             UUID clOrderId
     ) {
         Order order = orderRepository.findById(clOrderId).orElseThrow(EntityNotFoundException::new);
-        order.setStatus(Status.ACCEPTED);
+        order.setStatus(Status.SENT);
         return orderRepository.save(order);
     }
 }

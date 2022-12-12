@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
 //        );
 
         Order order = new Order();
-        order.setStatus(Status.SENT);
+        order.setStatus(Status.ACCEPTED);
 //        order.setOrderQtyDataList(orderQtyDataList);
 //        order.setInstrumentList(instrumentList);
         order.setSide(requestDTO.getSide());

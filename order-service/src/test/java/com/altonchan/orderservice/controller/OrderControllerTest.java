@@ -76,7 +76,7 @@ class OrderControllerTest {
 
     @Test
     void createOrder() throws Exception {
-        
+
         String jsonString = "{\n" +
                 "    \"instrumentList\": [\n" +
                 "        {\n" +
